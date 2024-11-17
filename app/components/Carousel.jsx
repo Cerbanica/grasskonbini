@@ -37,7 +37,7 @@ const Carousel = ({ images }) => {
       className="relative w-full max-w-2xl mx-auto"
     >
       {/* Image display */}
-      <div className="overflow-hidden rounded-lg">
+      <div className="overflow-hidden lg:rounded-lg">
         <img
           src={images[currentIndex]}
           alt={`Slide ${currentIndex + 1}`}
@@ -48,13 +48,13 @@ const Carousel = ({ images }) => {
       {/* Navigation buttons */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 min-h-36 bg-gray-800/20   text-white  py-2"
+        className="hidden lg:block absolute top-1/2 left-0 transform -translate-y-1/2 min-h-36 bg-gray-800/20   text-white  py-2"
       >
           <ChevronLeftIcon className="w-12 " />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 min-h-36 bg-gray-800/20  text-white  py-2"
+        className="hidden lg:block absolute top-1/2 right-0 transform -translate-y-1/2 min-h-36 bg-gray-800/20  text-white  py-2"
       >
          <ChevronRightIcon className="w-12 " />
       </button>
