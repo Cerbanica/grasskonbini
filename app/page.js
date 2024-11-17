@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { CarousellPortfolio, ContactUs, ContentCard, Navbar } from "./components";
+import { CarousellPortfolio, ContactUs, ContentCard, Navbar, Swiper2 } from "./components";
 /* import { supabase } from "@/utils/supabaseClient"; */
 
 
@@ -52,7 +52,9 @@ export default  function Home() {
     
       <ContentCard inverted={true}/>
       <ContentCard/>
-      
+      <h1 className="text-3xl font-bold text-center mb-6">Welcome to Our Carousel</h1>
+
+      <Swiper2/>
       <div id="portfolio" className="lg:pt-20">
 
       <CarousellPortfolio/>
