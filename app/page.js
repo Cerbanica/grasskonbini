@@ -1,101 +1,95 @@
+"use client"
 import Image from "next/image";
+import { CarousellPortfolio, ContactUs, ContentCard, Navbar } from "./components";
+import { supabase } from "@/utils/supabaseClient";
 
-export default function Home() {
+
+
+
+
+
+export default  function Home() {
+const fetchdata =async ()=>{
+
+  const { data: projects, error } = await supabase.from('projects').select('*');
+  if (error) {
+    console.error('Error fetching projects:', error);
+    return <div>Error loading projects.</div>;
+  }
+
+}
+ 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="flex flex-col items-center justify-items-center" >
+      <Navbar scrollToSection={scrollToSection}/>
+      <div className="w-full bg-green-500 bg-opacity-15  align-middle justify-items-center mb-4">
+        <div className="w-8/12 flex flex-row items-center justify-items-center min-h-[60vh]">
+        <div className="flex-1 flex-col">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <h1 className="text-black text-4xl font-bold">We Help brands grow online</h1>
+        <span className="text-black">It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</span>
+        <button className="btn-primary">Schedule a call</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <div className="flex-1">
+
+        </div>
+
+        </div>
+       
+      </div>
+
+      <div className="flex flex-col gap-4 lg:w-8/12 ">
+     
+
+
+      
+    
+      <ContentCard inverted={true}/>
+      <ContentCard/>
+      
+      <div id="portfolio" className="lg:pt-20">
+
+      <CarousellPortfolio/>
+
+      <ContentCard/>
+      <ContentCard inverted={true}/>
+
+      </div>
+      <div id="contact"><ContactUs/></div>
+      
+      </div>
+
+
+      <footer className="row-start-3 w-full bg-slate-800 text-xl font-bold flex gap-6 flex-wrap items-center justify-center">
+        
+        Grass konbini 2024
       </footer>
     </div>
   );
 }
+
+/*   return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold">Portfolio</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        {projects.map((project) => (
+          <div key={project.id} className="border p-4 rounded">
+            <h2 className="text-xl font-semibold">{project.title}</h2>
+            <p>{project.description}</p>
+            <img src={project.image_url} alt={project.title} className="mt-4" />
+            <a href={project.youtube_url} className="text-blue-500 mt-2 block">
+              Watch on YouTube
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+ */
