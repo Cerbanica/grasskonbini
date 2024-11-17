@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import { CarousellPortfolio, ContactUs, ContentCard, Navbar } from "./components";
-import { supabase } from "@/utils/supabaseClient";
+/* import { supabase } from "@/utils/supabaseClient"; */
 
 
 
@@ -9,7 +9,7 @@ import { supabase } from "@/utils/supabaseClient";
 
 
 export default  function Home() {
-const fetchdata =async ()=>{
+/* const fetchdata =async ()=>{
 
   const { data: projects, error } = await supabase.from('projects').select('*');
   if (error) {
@@ -17,7 +17,7 @@ const fetchdata =async ()=>{
     return <div>Error loading projects.</div>;
   }
 
-}
+} */
  
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
