@@ -53,7 +53,7 @@ export default  function Home() {
       <ContentCard/>
       <h1 className="text-3xl font-bold text-center mb-6">Welcome to Our Carousel</h1>
 
-      <Swiper2/>
+     
       <div id="portfolio" className="lg:pt-20">
 
       <CarousellPortfolio/>
