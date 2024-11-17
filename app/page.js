@@ -7,7 +7,6 @@ import { CarousellPortfolio, ContactUs, ContentCard, Navbar, Swiper2 } from "./c
 
 
 
-
 export default  function Home() {
 /* const fetchdata =async ()=>{
 

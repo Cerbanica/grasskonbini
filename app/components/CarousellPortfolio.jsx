@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion';
 import  Carousel  from './Carousel';
+import Swiper2 from './swiper2';
 
 const Items = () => {
 
@@ -47,7 +48,7 @@ const CarousellPortfolio = () => {
     <div onClick={()=>setIsPanelShown(false)} className="fixed inset-0 cursor-pointer text-black bg-gray-900 backdrop-blur-md bg-opacity-20 flex items-center justify-center z-50">
     <div  onClick={(e) => e.stopPropagation()}  className="cursor-default w-full lg:w-8/12 flex flex-col lg:flex-row bg-slate-50 rounded-2xl p-4 lg:min-h-[80vh]">
   
-    <div className='flex-1 flex items-center justify-center p-2 '><Carousel images={images} /></div>
+    <div className='flex-1 flex items-center justify-center p-2 '><Carousel images={images}/></div>
     <div className='flex-1 border-0 border-l  max-h-[80vh] overflow-y-auto'>
       <div className='sticky top-0 bg-white p-2 border-0 border-b'>
       

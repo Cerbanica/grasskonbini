@@ -1,5 +1,6 @@
 // Carousel.js
 import React, { useState } from "react";
+import { useSwipeable } from "react-swipeable";
 
 const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,8 +22,18 @@ const Carousel = ({ images }) => {
     setCurrentIndex(index);
   };
 
+  // Swipeable handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: nextSlide, // Swipe left to go to the next slide
+    onSwipedRight: prevSlide, // Swipe right to go to the previous slide
+    trackMouse: true, // Enable mouse swiping for desktops
+  });
+
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div
+      {...handlers} // Spread swipe handlers into the main div
+      className="relative w-full max-w-2xl mx-auto"
+    >
       {/* Image display */}
       <div className="overflow-hidden rounded-lg">
         <img
@@ -41,7 +52,7 @@ const Carousel = ({ images }) => {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 min-h-36 bg-gray-800/30 text-white px-3 py-2 "
+        className="absolute top-1/2 right-0 transform -translate-y-1/2 min-h-36 bg-gray-800/30 text-white px-3 py-2"
       >
         Next
       </button>
@@ -52,7 +63,7 @@ const Carousel = ({ images }) => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-12 h-1  ${
+            className={`w-12 h-1 ${
               index === currentIndex ? "bg-konbini" : "bg-gray-300"
             }`}
           ></button>
