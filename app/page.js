@@ -46,7 +46,7 @@ export default  function Home() {
     <div className="flex flex-col items-center justify-items-center" >
       <Navbar scrollToSection={scrollToSection}/>
       <div className="w-full bg-green-500 bg-opacity-15  align-middle justify-items-center mb-4 ">
-        <div className="w-8/12 flex flex-row items-center justify-items-center min-h-[60vh]">
+        <div className="w-full p-2 lg:w-8/12 flex flex-col lg:flex-row items-center justify-items-center min-h-[60vh]">
         <div className="flex-1 flex-col">
 
         <h1 className="text-black text-4xl font-bold">We Help brands grow online</h1>
