@@ -6,26 +6,28 @@ const Navbar = ({scrollToSection}) => {
   
   return (
     <div className='w-full flex justify-center sticky  top-0 z-50 text-black  bg-white border-b'>
-        <div className='flex justify-between  items-middle lg:w-8/12  w-full p-4 lg:pb-0 ' >
+        <div className='flex justify-between   lg:w-8/12  w-full p-4 lg:pb-0 ' >
 
-       
-        <div className=" lg:pb-2">
-       
-        <Image
-          src="/konbinilogofull1.png"
+       <div className='h-full py-auto'>
+       <Image
+          src="/konbinilogofull2.png"
           alt="logo"
           width={200}
           height={250}
-          className="object-contain"
+          className="object-contain "
         />
+       </div>
+        
+       
+       
      
      
-</div>
+
 
         <div className='hidden lg:flex flex-row '>
-
-        <button className='flex-1 min-w-40 border-konbini border-b-4 pb-3' >Home</button>
-          <button  onClick={() => scrollToSection('portfolio')} className='flex-1 min-w-40 pb-2'>Portfolio</button>
+        <button  className='flex-1 min-w-40 pb-2'>Home</button>
+        <button onClick={() => scrollToSection('portfolio')} className='flex-1 min-w-40 border-konbini border-b-4 pb-3' >Portfolio</button>
+         
           <button className='flex-1 min-w-40 pb-2'>About Us</button>
           <button  onClick={() => scrollToSection('contact')} className='flex-1 min-w-40 pb-2'>Contact us</button>
 

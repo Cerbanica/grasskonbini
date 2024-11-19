@@ -138,12 +138,15 @@ There are many variations of passages of Lorem Ipsum available, but the majority
 
 
       </div>
+      <div className='w-full justify-center flex '>
       <button
-        className=" mt-2"
+        className=" btn-primary my-2 mb-4 max-w-72"
         onClick={() => setCount(count + 6)} // Increase count by 3 on each click
       >
         View More
       </button>
+      </div>
+      
     </div>
     </>
   )

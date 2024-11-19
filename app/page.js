@@ -2,23 +2,23 @@
 
 import Image from "next/image";
 import { CarousellPortfolio, ContactUs, ContentCard, Navbar, Swiper2 } from "./components";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 /* import { supabase } from "@/utils/supabaseClient"; */
 
 
 
 
 
-export default  function Home() {
-/* const fetchdata =async ()=>{
-
-  const { data: projects, error } = await supabase.from('projects').select('*');
-  if (error) {
-    console.error('Error fetching projects:', error);
-    return <div>Error loading projects.</div>;
-  }
-
-} */
+export default function Home() {
+  /* const fetchdata =async ()=>{
+  
+    const { data: projects, error } = await supabase.from('projects').select('*');
+    if (error) {
+      console.error('Error fetching projects:', error);
+      return <div>Error loading projects.</div>;
+    }
+  
+  } */
   const [isPanelShown, setIsPanelShown] = useState(false);
 
   // Manage Tailwind class for body scroll
@@ -44,52 +44,57 @@ export default  function Home() {
 
   return (
     <div className="flex flex-col items-center justify-items-center" >
-      <Navbar scrollToSection={scrollToSection}/>
+      <Navbar scrollToSection={scrollToSection} />
       <div className="w-full bg-green-500 bg-opacity-15  align-middle justify-items-center mb-4 ">
         <div className="w-full p-2 lg:w-8/12 flex flex-col lg:flex-row items-center justify-items-center min-h-[60vh]">
-        <div className="flex-1 flex-col">
+          <div className="flex-1 flex-col">
 
-        <h1 className="text-black text-4xl font-bold">We Help brands grow online</h1>
-        <span className="text-black">It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</span>
-        <button className="btn-primary">Schedule a call</button>
-        </div>
-        <div className="flex-1">
+            <h1 className="text-black text-4xl font-bold">We Help brands grow online</h1>
+            <span className="text-black">It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</span>
+            <button className="btn-primary">Schedule a call</button>
+          </div>
+          <div className="flex-1">
+
+          </div>
 
         </div>
 
-        </div>
-       
       </div>
 
-      <div className="flex flex-col gap-4 lg:w-8/12 ">
-     
+      <div className="flex flex-col gap-10 lg:w-8/12 ">
 
 
-      
-    
-      <ContentCard inverted={true}/>
-      <ContentCard/>
-    
 
-     
-      <div id="portfolio" className="lg:pt-20">
 
-      <CarousellPortfolio
-      showPanel={() => setIsPanelShown(true)} // Pass function reference
-      closePanel={() => setIsPanelShown(false)} // Pass function reference
-    />
 
-      <ContentCard/>
-      <ContentCard inverted={true}/>
+        <ContentCard inverted={true} />
+        <ContentCard />
+
+
+
+        <div id="portfolio" className="lg:pt-20">
+
+          <CarousellPortfolio
+            showPanel={() => setIsPanelShown(true)} // Pass function reference
+            closePanel={() => setIsPanelShown(false)} // Pass function reference
+          />
+
+
+        </div>
+        <section>
+
+          <h1 className="text-black text-center text-4xl font-bold">Who are Grass Konbini?</h1>
+
+          <ContentCard />
+          <ContentCard inverted={true} />
+        </section>
+        <div id="contact"><ContactUs /></div>
 
       </div>
-      <div id="contact"><ContactUs/></div>
-      
-      </div>
 
 
-      <footer className="row-start-3 w-full bg-slate-800 text-xl font-bold flex gap-6 flex-wrap items-center justify-center">
-        
+      <footer className="row-start-3 w-full bg-slate-800 text-xl font-bold flex gap-6 flex-wrap mt-[10vh] items-center justify-center">
+
         Grass konbini 2024
       </footer>
     </div>
