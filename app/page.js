@@ -1,6 +1,8 @@
 "use client"
+
 import Image from "next/image";
 import { CarousellPortfolio, ContactUs, ContentCard, Navbar, Swiper2 } from "./components";
+import { useState ,useEffect} from "react";
 /* import { supabase } from "@/utils/supabaseClient"; */
 
 
@@ -17,17 +19,33 @@ export default  function Home() {
   }
 
 } */
- 
+  const [isPanelShown, setIsPanelShown] = useState(false);
+
+  // Manage Tailwind class for body scroll
+  useEffect(() => {
+    if (isPanelShown) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => document.body.classList.remove('overflow-hidden'); // Cleanup on unmount
+  }, [isPanelShown]);
+
+
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+
+
+
   return (
     <div className="flex flex-col items-center justify-items-center" >
       <Navbar scrollToSection={scrollToSection}/>
-      <div className="w-full bg-green-500 bg-opacity-15  align-middle justify-items-center mb-4">
+      <div className="w-full bg-green-500 bg-opacity-15  align-middle justify-items-center mb-4 ">
         <div className="w-8/12 flex flex-row items-center justify-items-center min-h-[60vh]">
         <div className="flex-1 flex-col">
 
@@ -56,7 +74,10 @@ export default  function Home() {
      
       <div id="portfolio" className="lg:pt-20">
 
-      <CarousellPortfolio/>
+      <CarousellPortfolio
+      showPanel={() => setIsPanelShown(true)} // Pass function reference
+      closePanel={() => setIsPanelShown(false)} // Pass function reference
+    />
 
       <ContentCard/>
       <ContentCard inverted={true}/>

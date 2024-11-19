@@ -31,7 +31,7 @@ const Items = () => {
   )
 };
 
-const CarousellPortfolio = () => {
+const CarousellPortfolio = ({showPanel,closePanel}) => {
   const [count, setCount] = useState(6);
   const [isPanelShown, setIsPanelShown]=useState(false);
   const images = [
@@ -40,17 +40,23 @@ const CarousellPortfolio = () => {
     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/800px-Cat03.jpg",
   ];
 
-  const showPanel=()=>{
+  const handleShowPanel=()=>{
     setIsPanelShown(true)
+    if (showPanel) showPanel();
   }
+
+  const handleClosePanel = () => {
+    setIsPanelShown(false); // Close the panel locally
+    if (closePanel) closePanel(); // Call the parent-provided closePanel, if defined
+  };
   return (
     <>
     {isPanelShown&&(
-    <div onClick={()=>setIsPanelShown(false)} className="fixed inset-0 cursor-pointer text-black bg-gray-900 backdrop-blur-md bg-opacity-20 flex items-center justify-center z-50">
-    <div  onClick={(e) => e.stopPropagation()}  className="cursor-default w-full lg:w-8/12 flex-col bg-white lg:rounded-2xl h-full lg:h-[80vh]' ">
-      <div className='w-full flex justify-end '><button onClick={()=>setIsPanelShown(false)} className='p-2'><XMarkIcon className='w-6 text-gray-500' /></button></div>
+    <div onClick={handleClosePanel} className="fixed inset-0 cursor-pointer text-black bg-gray-900 backdrop-blur-md bg-opacity-20 flex items-center justify-center z-50">
+    <div  onClick={(e) => e.stopPropagation()}  className="cursor-default w-full lg:w-8/12 flex-col bg-white lg:rounded-2xl h-full lg:h-[80vh] ">
+      <div className='w-full flex justify-end '><button onClick={handleClosePanel} className='p-2'><XMarkIcon className='w-6 text-gray-500' /></button></div>
 
-      <div className='w-full flex flex-col lg:flex-row   h-full lg:h-[80vh]'>
+      <div className='w-full flex flex-col lg:flex-row   h-full lg:h-[80vh] bg-white lg:rounded-bl-2xl'>
     <div className='flex-1  items-center justify-center p-2 hidden lg:flex '><Carousel images={images}/></div>
     <div className='flex-1 border-0 border-l  max-h-[90vh] lg:max-h-[80vh] overflow-y-auto' >
       <div className='sticky top-0 bg-white p-2 z-50 border-0 border-b'>
@@ -61,7 +67,7 @@ const CarousellPortfolio = () => {
       </div>
       <div className='flex-1  items-center justify-center  lg:hidden '><Carousel images={images}/></div>
      
-    <div className=' p-2 bg-white pt-4'>
+    <div className=' p-2 bg-white pt-4 pb-10'>
 
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
@@ -94,7 +100,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
 2
 1
 </div>
-    <div className='fixed lg:sticky bottom-0 w-full bg-white p-2 lg:p-4 flex border-0 border-t gap-2 justify-between'>
+    <div className='fixed lg:sticky bottom-0 w-full bg-white p-2 lg:p-4 flex border-0 border-t gap-2 justify-between '>
 
     
       
@@ -115,7 +121,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
       <div className='w-full flex flex-col lg:grid lg:grid-cols-3 gap-2 px-2 lg:p-0'>
         {Array.from({ length: count }).map((_, index) => (
           <motion.div
-          onClick={()=>showPanel()}
+          onClick={()=>handleShowPanel()}
             key={index}
             initial={{ opacity: 0, y: 20 }} // Start slightly below
             animate={{ opacity: 1, y: 0 }}  // Fade in and move to original position
